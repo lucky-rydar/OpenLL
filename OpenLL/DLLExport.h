@@ -23,6 +23,11 @@ public:
 		auto temp = (T(*)(Params...))func;
 		return temp(params...);
 	}
+
+	virtual ~DLLExport()
+	{
+		::FreeLibrary(dll);
+	}
 	
 private:
 	HMODULE dll;

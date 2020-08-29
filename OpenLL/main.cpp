@@ -1,15 +1,16 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <Windows.h>
 #include "DLLExport.h"
 
 using namespace std;
 
+DLLExport<int, int, int> sum("test_dll.dll", "sum");
+
 int main(int argc, char** argv)
 {
-	DLLExport<int, int, int> func("test_dll.dll", "sum");
-	
-	cout << func(1, 1) << endl;
+	cout << sum(250, 100) << endl;
 
 	return 0;
 }
