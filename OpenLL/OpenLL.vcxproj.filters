@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DLLExport.h">
+    <ClInclude Include="DLLImportFunc.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,10 +6,10 @@
 using namespace std;
 
 template <class T, class ...Params>
-class DLLExport
+class DLLImportFunc
 {
 public:
-	DLLExport(string dll_name, string func_name)
+	DLLImportFunc(string dll_name, string func_name)
 	{
 		wstring local_dll_name(dll_name.begin(), dll_name.end());
 		dll = LoadLibrary((LPCWSTR)local_dll_name.c_str());
@@ -22,7 +22,7 @@ public:
 		return ((T(*)(Params...))(func))(params...);
 	}
 
-	virtual ~DLLExport()
+	virtual ~DLLImportFunc()
 	{
 		::FreeLibrary(dll);
 	}

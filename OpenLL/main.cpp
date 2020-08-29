@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include <Windows.h>
-#include "DLLExport.h"
+#include "DLLImportFunc.h"
 
 using namespace std;
 
-DLLExport<int, int, int> sum("test_dll.dll", "sum");
+DLLImportFunc<int, int, int> sum("test_dll.dll", "sum");
 
 int main(int argc, char** argv)
 {
