@@ -14,14 +14,12 @@ public:
 		wstring local_dll_name(dll_name.begin(), dll_name.end());
 		dll = LoadLibrary((LPCWSTR)local_dll_name.c_str());
 
-		auto temp_func = (T(*)(Params...))GetProcAddress(dll, func_name.c_str());
-		func = (FARPROC)temp_func;
+		func = (T(*)(Params...))GetProcAddress(dll, func_name.c_str());
 	}
 
 	T operator()(Params... params)
 	{
-		auto temp = (T(*)(Params...))func;
-		return temp(params...);
+		return ((T(*)(Params...))(func))(params...);
 	}
 
 	virtual ~DLLExport()
@@ -31,7 +29,7 @@ public:
 	
 private:
 	HMODULE dll;
-	FARPROC func;
+	void* func;
 	
 };
 
