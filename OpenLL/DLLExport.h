@@ -24,8 +24,6 @@ public:
 		return temp(params...);
 	}
 	
-	
-
 private:
 	HMODULE dll;
 	FARPROC func;
