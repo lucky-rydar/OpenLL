@@ -14,7 +14,7 @@ public:
 		wstring local_dll_name(dll_name.begin(), dll_name.end());
 		dll = LoadLibrary((LPCWSTR)local_dll_name.c_str());
 		
-		if(dll == NULL || dll == nullptr)
+		if(dll == NULL)
 			puts("Library has not found");
 
 		func = (T(*)(Params...))GetProcAddress(dll, func_name.c_str());
