@@ -17,14 +17,20 @@ public:
 		if(dll == NULL)
 			puts("Library has not found");
 
-		func = (T(*)(Params...))GetProcAddress(dll, func_name.c_str());
+		func = GetProcAddress(dll, func_name.c_str());
 		if (func == NULL)
 			puts("Function has not found");
 	}
 
 	T operator()(Params... params)
 	{
-		return ((T(*)(Params...))(func))(params...);
+		if (func != nullptr)
+			return ((T(*)(Params...))(func))(params...);
+		else
+		{
+			puts("You cannot run this function!");
+			return -1;
+		}
 	}
 
 	virtual ~DLLImport()
