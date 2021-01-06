@@ -1,7 +1,7 @@
 ﻿  main.cpp
-  Создание кода
-  2 of 141 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  Generating code
+  140 of 140 functions (100.0%) were compiled.
+    139 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
+  Finished generating code
   OpenLL.vcxproj -> D:\my_projects\open_source_projects\OpenLL\x64\Release\OpenLL.exe

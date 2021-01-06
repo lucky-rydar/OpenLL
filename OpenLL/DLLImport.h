@@ -9,6 +9,8 @@ template <class T, class ...Params>
 class DLLImport
 {
 public:
+	typedef T(__stdcall *func_type)(Params...);
+	
 	DLLImport(string dll_name, string func_name)
 	{
 		wstring local_dll_name(dll_name.begin(), dll_name.end());
@@ -21,7 +23,7 @@ public:
 		}
 			
 
-		func = GetProcAddress(dll, func_name.c_str());
+		func = (func_type)GetProcAddress(dll, func_name.c_str());
 		if (func == NULL)
 		{
 			cout << "Function has not found: ";
@@ -33,7 +35,7 @@ public:
 	T operator()(Params... params)
 	{
 		if (func != nullptr)
-			return ((T(*)(Params...))(func))(params...);
+			return func(params...);
 		else
 			return NULL;
 	}
@@ -44,8 +46,8 @@ public:
 	}
 	
 private:
-	HMODULE dll;
-	void* func;
+	HINSTANCE dll;
+	func_type func;
 	
 };
 
